@@ -1,0 +1,7 @@
+Contravenciones leves de primera clase, se multará con 5% del sueldo básico y se le restarán 1.5 puntos según el art. 139
+Contravenciones leves de segunda clase, se multará con 10% del sueldo básico y se le restarán 3 puntos según el art. 140
+Contravenciones leves de tercera clase, se multará con 15% del sueldo básico y se le restarán 4.5 puntos según el art. 141
+Contravenciones graves de primera clase, se multará con 30% del sueldo básico y se le restarán 6 puntos según el art. 142
+Contravenciones graves de segunda clase, se multará con 40% del sueldo básico y se le restarán 7.5 puntos según el art. 143
+Contravenciones graves de tercera clase, se multará con 50% del sueldo básico y se le restarán 9 puntos según el art. 144
+Contravenciones muy graves, se multará con 100% del sueldo básico y se le restarán 10 puntos según el art. 145
