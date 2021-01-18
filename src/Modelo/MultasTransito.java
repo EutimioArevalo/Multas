@@ -14,6 +14,7 @@ public class MultasTransito {
     private String descripcion;
     private String tipoFalta;
 
+
     public MultasTransito() {
     }
 

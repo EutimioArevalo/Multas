@@ -5,18 +5,27 @@
  */
 package Vista.componentes;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import Controlador.ControladorListaMulta;
+import Modelo.MultasTransito;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 /**
  *
  * @author timoa
  */
-public class Componentes extends JFrame{
+public class Componentes extends JFrame {
+
     //JButton consultar, biblioteca, registrarM, registrarA, generarI;
-    
-    public static void ButtonImage(JButton Bconsultar){
-  
+    public static void cargarCombo(JComboBox cbx) {
+        cbx.removeAllItems();
+        ControladorListaMulta lista = new ControladorListaMulta();
+        lista.leerTxt();
+        int tamanio = lista.getLista().tamanio();
+        for (int i = 0; i < tamanio; i++) {
+            MultasTransito dato = lista.getLista().obtenerPorPosicion(i);
+            cbx.addItem(dato.getRubro());
+        }
     }
+
 }
