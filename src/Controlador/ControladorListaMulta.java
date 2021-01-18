@@ -24,6 +24,10 @@ public class ControladorListaMulta {
         this.lista = lista;
     }
     
+    
+    /**
+     * See lee los el archivo que contiene la informacion de las multas
+     */
     public void leerTxt(){
         try {
             FileReader ficheroEntrada = new FileReader("multas.txt");

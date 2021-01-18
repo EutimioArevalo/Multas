@@ -22,7 +22,10 @@ public class ListaMulta {
     public boolean estaVacia(){
         return (this.cabecera == null);
     }
-    
+    /**
+     * Metodo de una lista enlazada para que retorne el tamaño de la lista
+     * @return Tamaño de la lista
+     */
     public int tamanio(){
         int tamanio = 0;
         if (!estaVacia()) {
@@ -34,7 +37,10 @@ public class ListaMulta {
         }
         return tamanio;
     }
-    
+    /**
+     * Metodo insertar permitira ingresar el dato
+     * @param dato de tipo MultaTransito
+     */
     public void insertar(MultasTransito dato){
         if (estaVacia()) {
             NodoMulta temp = new NodoMulta(dato, null);
