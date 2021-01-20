@@ -27,7 +27,7 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         Componentes.cargarCombo(jComboBoxRubro);
         lista.leerTxt();
         jTextFieldFecha.setText(String.valueOf(new Date()));
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**

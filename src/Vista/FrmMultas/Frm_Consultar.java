@@ -17,6 +17,7 @@ public class Frm_Consultar extends javax.swing.JDialog {
     public Frm_Consultar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

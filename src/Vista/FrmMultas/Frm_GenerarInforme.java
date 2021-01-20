@@ -17,6 +17,7 @@ public class Frm_GenerarInforme extends javax.swing.JDialog {
     public Frm_GenerarInforme(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
