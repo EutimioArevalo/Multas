@@ -3,39 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Controlador;
 
 /**
  *
  * @author ASUS
  */
-public class NodoMulta {
-    private MultasTransito dato;
-    private NodoMulta siguiente;
+public class Nodo {
+    private Object dato;
+    private Nodo siguiente;
 
-    public NodoMulta() {
+    public Nodo() {
         this.dato = null;
         this.siguiente = null;
     }
 
-    public NodoMulta(MultasTransito dato, NodoMulta siguiente) {
+    public Nodo(Object dato, Nodo siguiente) {
         this.dato = dato;
         this.siguiente = siguiente;
     }
 
-    public MultasTransito getDato() {
+    public Object getDato() {
         return dato;
     }
 
-    public void setDato(MultasTransito dato) {
+    public void setDato(Object dato) {
         this.dato = dato;
     }
 
-    public NodoMulta getSiguiente() {
+    public Nodo getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoMulta siguiente) {
+    public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
     }
 }

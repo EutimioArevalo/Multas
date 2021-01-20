@@ -5,8 +5,8 @@
  */
 package Vista;
 
-import Controlador.ListaMulta;
-import Modelo.MultasTransito;
+import Controlador.ListaSimple;
+import Modelo.Normativa;
 import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.*;
@@ -16,13 +16,13 @@ import javax.swing.table.*;
  * @author ASUS
  */
 public class tabla extends AbstractTableModel{
-    private ListaMulta lista = new ListaMulta();
+    private ListaSimple lista = new ListaSimple();
 
-    public ListaMulta getLista() {
+    public ListaSimple getLista() {
         return lista;
     }
 
-    public void setLista(ListaMulta lista) {
+    public void setLista(ListaSimple lista) {
         this.lista = lista;
     }
 
@@ -38,7 +38,7 @@ public class tabla extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        MultasTransito dato = lista.obtenerPorPosicion(rowIndex);
+        Normativa dato = (Normativa)lista.obtenerPorPosicion(rowIndex);
         switch (columnIndex) {
             case 0: return dato.getRubro();
             case 1: return dato.getDescripcion();

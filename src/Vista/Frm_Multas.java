@@ -5,13 +5,12 @@
  */
 package Vista;
 
-import Vista.tabla.tabla;
-import Controlador.ControladorListaMulta;
+import Vista.tabla;
+import Controlador.ListaNormativa;
 import Controlador.Utilidades;
-import Modelo.MultasTransito;
+import Modelo.Normativa;
 import Vista.utilidades.UtilidadesComponentes;
 import java.awt.event.ItemEvent;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *

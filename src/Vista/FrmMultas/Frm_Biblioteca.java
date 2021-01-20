@@ -5,7 +5,7 @@
  */
 package Vista.FrmMultas;
 
-import Controlador.ControladorListaMulta;
+import Controlador.ListaNormativa;
 import Controlador.Utilidades;
 import Vista.tabla;
 
@@ -15,7 +15,7 @@ import Vista.tabla;
  */
 
 public class Frm_Biblioteca extends javax.swing.JDialog {
-    ControladorListaMulta lista = new ControladorListaMulta();
+    ListaNormativa lista = new ListaNormativa();
     Utilidades utilidades = new Utilidades();
     tabla modelo = new tabla();
     /**
