@@ -14,7 +14,7 @@ public class Utilidades {
     public String leerTxtProcetajeMulta(){
         String dato = "";
         try {
-            FileReader ficheroEntrada = new FileReader("porcentajeMulta.txt");
+            FileReader ficheroEntrada = new FileReader("Componentes/porcentajeMulta.txt");
             BufferedReader buffer = new BufferedReader(ficheroEntrada);
             String temp = "";
             while (temp != null) {

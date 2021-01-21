@@ -3,16 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package Controlador.ListasModelo;
 
-import Modelo.Normativa;
-import java.io.*;
+import Controlador.ListaSimple;
+import Modelo.Marca;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
  * @author ASUS
  */
-public class ListaNormativa {
+public class ListaMarca {
     ListaSimple lista = new ListaSimple();
 
     public ListaSimple getLista() {
@@ -25,17 +30,15 @@ public class ListaNormativa {
     
     public void leerTxt(){
         try {
-            FileReader ficheroEntrada = new FileReader("multas.txt");
+            FileReader ficheroEntrada = new FileReader("Componentes/marca.txt");
             BufferedReader buffer = new BufferedReader(ficheroEntrada);
-            Normativa dato = null;
+            Marca dato = null;
             String temp = "";
             while (temp != null) {
                 temp = buffer.readLine();
                 if (temp == null)
                     break;
-                String x = temp;
-                String [] arreglo = x.split(";");
-                dato = new Normativa(arreglo[0], arreglo[1], arreglo[2]);
+                dato = new Marca(temp);
                 lista.insertar(dato);
             }
         } catch (FileNotFoundException ex) {
@@ -47,11 +50,11 @@ public class ListaNormativa {
     
     public void escribirTxt(){
         try {
-            FileWriter fichero = new FileWriter("multas.txt");
+            FileWriter fichero = new FileWriter("Componentes/marca.txt");
             int tamanio = lista.tamanio();
             for (int i = 0; i < tamanio; i++) {
-                Normativa dato = (Normativa)lista.obtenerPorPosicion(i);
-                fichero.write(dato.getRubro()+";"+dato.getDescripcion()+";"+dato.getTipoFalta()+"\n");
+                Marca dato = (Marca)lista.obtenerPorPosicion(i);
+                fichero.write(dato.getNombre()+"\n");
             }
             fichero.close();
         } catch (Exception e) {

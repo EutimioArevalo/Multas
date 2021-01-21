@@ -5,7 +5,7 @@
  */
 package Vista.FrmMultas;
 
-import Controlador.ListaNormativa;
+import Controlador.ListasModelo.ListaNormativa;
 import Controlador.Utilidades;
 import Vista.tabla;
 
