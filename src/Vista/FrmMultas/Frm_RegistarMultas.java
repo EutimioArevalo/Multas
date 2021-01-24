@@ -5,9 +5,9 @@
  */
 package Vista.FrmMultas;
 
-import Controlador.ListasModelo.ListaNormativa;
+import Controlador.DAO.MarcaDAO;
+import Controlador.DAO.NormativaDAO;
 import Controlador.ListaSimple;
-import Controlador.ListasModelo.ListaMarca;
 import Modelo.Normativa;
 import Vista.componentes.Componentes;
 import java.awt.event.ItemEvent;
@@ -18,16 +18,13 @@ import java.util.Date;
  * @author timoa
  */
 public class Frm_RegistarMultas extends javax.swing.JDialog {
-    ListaNormativa listaRubro = new ListaNormativa();
-    ListaMarca listaMarca = new ListaMarca();
+    NormativaDAO normativaD = new NormativaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
     /**
      * Creates new form Frm_RegistarMultas
      */
     public Frm_RegistarMultas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        listaRubro.leerTxt();
-        listaMarca.leerTxt();
         Componentes.cargarComboNormativa(jComboBoxRubro);
         Componentes.cargarComboPlacas(jComboBoxMarcas);
         jTextFieldFecha.setText(String.valueOf(new Date()));
@@ -95,6 +92,7 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setText("Rubro");
 
+        jComboBoxRubro.setEditable(true);
         jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula", "Nro de placa" }));
         jComboBoxRubro.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -104,6 +102,14 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         jComboBoxRubro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxRubroActionPerformed(evt);
+            }
+        });
+        jComboBoxRubro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jComboBoxRubroKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBoxRubroKeyTyped(evt);
             }
         });
 
@@ -130,6 +136,11 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         jLabel1.setText("Marca:");
 
         jComboBoxMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxMarcas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMarcasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -274,24 +285,47 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
     private void jComboBoxRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRubroItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            try {
-                jTextFieldGravedad.setEnabled(true);
-                jTextAreaRubro.setEnabled(true);
-                String s = jComboBoxRubro.getSelectedItem().toString();
-                Normativa dato = (Normativa)listaRubro.getLista().obtenerPorPosicion(jComboBoxRubro.getSelectedIndex());
-                jTextAreaRubro.setText(dato.getDescripcion());
-                System.out.println(dato.getDescripcion());
-                jTextFieldGravedad.setText(dato.getTipoFalta());
-                jTextFieldGravedad.setEnabled(false);
-                jTextAreaRubro.setEditable(false);
-            } catch (Exception e) {
+            if (jComboBoxRubro.getSelectedIndex() != 1) {
+                jTextAreaRubro.setText("");
+                jTextFieldGravedad.setText("");
+            }else{
+                try {
+                    jTextFieldGravedad.setEnabled(true);
+                    jTextAreaRubro.setEnabled(true);
+                    Normativa dato = (Normativa)normativaD.listar().obtenerPorPosicion(jComboBoxRubro.getSelectedIndex() - 1);
+                    jTextAreaRubro.setText(dato.getDescripcion());
+                    jTextFieldGravedad.setText(dato.getTipoFalta());
+                    jTextFieldGravedad.setEnabled(false);
+                    jTextAreaRubro.setEditable(false);
+                } catch (Exception e) {
+
+                }
             }
         }
     }//GEN-LAST:event_jComboBoxRubroItemStateChanged
 
     private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBoxRubroActionPerformed
+
+    private void jComboBoxMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMarcasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxMarcasActionPerformed
+
+    private void jComboBoxRubroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxRubroKeyTyped
+        // TODO add your handling code here:
+        char valiar = evt.getKeyChar();
+        if (Character.isLetter(valiar)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_jComboBoxRubroKeyTyped
+
+    private void jComboBoxRubroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxRubroKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBoxRubroKeyReleased
 
     /**
      * @param args the command line arguments

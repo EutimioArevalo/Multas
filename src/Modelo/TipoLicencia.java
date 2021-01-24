@@ -10,11 +10,28 @@ package Modelo;
  * @author ASUS
  */
 public class TipoLicencia {
-    private String tipo;
     private String categoria;
+    private String tipo;
+    private String caracteristicas;
 
-    public TipoLicencia(String tipo, String categoria) {
+    public TipoLicencia() {
+    }
+    
+
+    public TipoLicencia(String categoria, String tipo, String caracteristicas) {
+        this.categoria = categoria;
         this.tipo = tipo;
+        this.caracteristicas = caracteristicas;
+    }
+    
+    
+    
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -26,11 +43,11 @@ public class TipoLicencia {
         this.tipo = tipo;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCaracteristicas() {
+        return caracteristicas;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
     }
 }

@@ -5,9 +5,9 @@
  */
 package Vista.FrmMultas;
 
-import Controlador.ListasModelo.ListaNormativa;
+import Controlador.DAO.NormativaDAO;
 import Controlador.Utilidades;
-import Vista.tabla;
+import Vista.Tablas.TablaNormativa;
 
 /**
  *
@@ -15,9 +15,9 @@ import Vista.tabla;
  */
 
 public class Frm_Biblioteca extends javax.swing.JDialog {
-    ListaNormativa lista = new ListaNormativa();
     Utilidades utilidades = new Utilidades();
-    tabla modelo = new tabla();
+    TablaNormativa modelo = new TablaNormativa();
+    NormativaDAO normativaD = new NormativaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
     /**
      * Creates new form Frm_Biblioteca
      */
@@ -25,13 +25,12 @@ public class Frm_Biblioteca extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        lista.leerTxt();
         cargarTabla();
         cargarTextoLabel();
     }
 
     public void cargarTabla(){
-        modelo.setLista(lista.getLista());
+        modelo.setLista(normativaD.listar());
         tablaMultas.setModel(modelo);
         modelo.ajustarTabla(tablaMultas);
         tablaMultas.updateUI();

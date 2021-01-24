@@ -14,6 +14,9 @@ public class Normativa {
     private String descripcion;
     private String tipoFalta;
 
+    public Normativa() {
+    }
+
     public Normativa(String rubro, String descripcion, String tipoFalta) {
         this.rubro = rubro;
         this.descripcion = descripcion;

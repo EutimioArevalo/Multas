@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,14 +13,28 @@ import java.util.Date;
  * @author ASUS
  */
 public class Licencia {
+    private String NroLicencia;
     private float puntos;
     private String propietario;
-    private Date fechaCaducidad;
+    private String fechaCaducidad;
+    private ArrayList<String> tipos = new ArrayList<>();
 
-    public Licencia(float puntos, String propietario, Date fechaCaducidad) {
+    public Licencia() {
+    }
+
+    public Licencia(String NroLicencia, float puntos, String propietario, String fechaCaducidad) {
+        this.NroLicencia = NroLicencia;
         this.puntos = puntos;
         this.propietario = propietario;
         this.fechaCaducidad = fechaCaducidad;
+    }
+
+    public String getNroLicencia() {
+        return NroLicencia;
+    }
+
+    public void setNroLicencia(String NroLicencia) {
+        this.NroLicencia = NroLicencia;
     }
 
     public float getPuntos() {
@@ -38,11 +53,19 @@ public class Licencia {
         this.propietario = propietario;
     }
 
-    public Date getFechaCaducidad() {
+    public String getFechaCaducidad() {
         return fechaCaducidad;
     }
 
-    public void setFechaCaducidad(Date fechaCaducidad) {
+    public void setFechaCaducidad(String fechaCaducidad) {
         this.fechaCaducidad = fechaCaducidad;
+    }
+
+    public ArrayList<String> getTipos() {
+        return tipos;
+    }
+
+    public void setTipos(ArrayList<String> tipos) {
+        this.tipos = tipos;
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package Vista.Tablas;
 
 import Controlador.ListaSimple;
 import Modelo.Normativa;
@@ -15,7 +15,7 @@ import javax.swing.table.*;
  *
  * @author ASUS
  */
-public class tabla extends AbstractTableModel{
+public class TablaNormativa extends AbstractTableModel{
     private ListaSimple lista = new ListaSimple();
 
     public ListaSimple getLista() {

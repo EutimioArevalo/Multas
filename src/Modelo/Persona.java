@@ -13,15 +13,17 @@ public class Persona {
     private String Cedula;
     private String nombre;
     private String apellido;
-    private float telefono;
+    private String direccion;
+    private String telefono;
 
     public Persona() {
     }
 
-    public Persona(String Cedula, String nombre, String apellido, float telefono) {
+    public Persona(String Cedula, String nombre, String apellido, String direccion, String telefono) {
         this.Cedula = Cedula;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.direccion = direccion;
         this.telefono = telefono;
     }
 
@@ -49,11 +51,19 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public float getTelefono() {
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(float telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 }
