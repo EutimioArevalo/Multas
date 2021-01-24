@@ -15,6 +15,9 @@ public class Vehiculo {
     private String color;
     private String placa;
 
+    public Vehiculo() {
+    }
+
     public Vehiculo(String propietario, String modelo, String color, String placa) {
         this.propietario = propietario;
         this.modelo = modelo;

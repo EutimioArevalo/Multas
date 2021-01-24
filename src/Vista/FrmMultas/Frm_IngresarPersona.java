@@ -209,6 +209,11 @@ public class Frm_IngresarPersona extends javax.swing.JFrame {
         });
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jButtonEliminarTipo.setText("Eliminar Tipo");
         jButtonEliminarTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -434,6 +439,11 @@ public class Frm_IngresarPersona extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, "Seleccione el tipo de licencia que desea eliminar");
         }
     }//GEN-LAST:event_jButtonEliminarTipoActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments

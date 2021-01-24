@@ -16,4 +16,5 @@ public interface InterfazDAO {
     public void guardar(Object o, String NombreArchivo)throws Exception;
     public Boolean modificar(Object o);
     public ListaSimple listar();
+    public ListaSimple listarSinClass();
 }

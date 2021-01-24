@@ -46,8 +46,8 @@ public class Utilidades {
             }
 
         } else {
-            String uno = extracciondato(o, atributoClase);
-            String dos = extracciondato(o1, atributoClase);
+            String uno = extraccionDato(o, atributoClase);
+            String dos = extraccionDato(o1, atributoClase);
             if (uno != null && dos != null) {
                 if (uno.toUpperCase().compareTo(dos.toUpperCase()) > 0) {
                     i = 1;
@@ -63,7 +63,7 @@ public class Utilidades {
         ListaSimple aux = new ListaSimple();
         if (!lista.estaVacia()) {
             for (int i = 0; i < lista.tamanio(); i++) {
-                String dato = extracciondato(lista.obtenerPorPosicion(i), AtributoClase);
+                String dato = extraccionDato(lista.obtenerPorPosicion(i), AtributoClase);
                 if (dato.startsWith(palabra)) {
                     aux.insertar(lista.obtenerPorPosicion(i));
                 }
@@ -76,7 +76,7 @@ public class Utilidades {
         Object aux = null;
         if (!lista.estaVacia()) {
             for (int i = 0; i < lista.tamanio(); i++) {
-                String dato = extracciondato(lista.obtenerPorPosicion(i), AtributoClase);
+                String dato = extraccionDato(lista.obtenerPorPosicion(i), AtributoClase);
                 if (dato.equals(palabra)) {
                     aux = lista.obtenerPorPosicion(i);
                     break;
@@ -86,7 +86,7 @@ public class Utilidades {
         return aux;
     }
 
-    public static String extracciondato(Object obj, String atributoClase) {
+    public static String extraccionDato(Object obj, String atributoClase) {
         Class clase = obj.getClass();
         Field atributo = null;
         Object informacion = null;
@@ -114,12 +114,12 @@ public class Utilidades {
     }
 
     public static Boolean comparar(String uno, Object obj, String atributoClase) {
-        String dos = extracciondato(obj, atributoClase);
+        String dos = extraccionDato(obj, atributoClase);
         return (dos != null) ? uno.equals(dos.toString()) : false;
     }
     
     public static int comparareTo(String uno, Object obj, String atributoClase) {
-        String dos = extracciondato(obj, atributoClase);
+        String dos = extraccionDato(obj, atributoClase);
         System.out.println("COMPARAR DATOS " + uno + "   " + dos);
         return (dos != null) ? uno.compareTo(dos.toString()) : -1;
     }
@@ -140,7 +140,7 @@ public class Utilidades {
         Boolean existe = false;
         if (!lista.estaVacia()) {
             for (int i = 0; i < lista.tamanio(); i++) {
-                String aux = Utilidades.extracciondato(lista.obtenerPorPosicion(i), atributoClase);
+                String aux = Utilidades.extraccionDato(lista.obtenerPorPosicion(i), atributoClase);
                 if (aux.equalsIgnoreCase(dato)) {
                     existe = true;
                     break;

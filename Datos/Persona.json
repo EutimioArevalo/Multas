@@ -1,1 +1,1 @@
-{"Controlador.ListaSimple":{"cabecera":{"dato":{"@class":"Modelo.Persona","cedula":1106892634,"nombre":"Pedro","apellido":"Gomez","direccion":"Bolonia","telefono":"0915678231"}}}}
+{"Controlador.ListaSimple":{"cabecera":{"dato":{"@class":"Modelo.Persona","cedula":1103957891,"nombre":"Lucas","apellido":"Rodriguez","direccion":"Argelia","telefono":"0963781524"},"siguiente":{"dato":{"@class":"Modelo.Persona","cedula":1106892634,"nombre":"Pedro","apellido":"Gomez","direccion":"Bolonia","telefono":"0915678231"}}}}}

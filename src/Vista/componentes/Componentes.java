@@ -29,7 +29,7 @@ public class Componentes extends JFrame {
         int tamanio = lista.tamanio();
         cbx.addItem("");
         for (int i = 0; i < tamanio; i++) {
-                String dato = Utilidades.extracciondato(lista.obtenerPorPosicion(i), atributoClase);
+                String dato = Utilidades.extraccionDato(lista.obtenerPorPosicion(i), atributoClase);
                 cbx.addItem(dato);
         }
     }
