@@ -8,7 +8,7 @@ package Vista.FrmMultas;
 import Controlador.DAO.LicenciaDAO;
 import Controlador.DAO.PersonaDAO;
 import Controlador.DAO.TipoLicenciaDAO;
-import Modelo.Persona;
+import Controlador.Utilidades;
 import Vista.Tablas.TablaPersona;
 import Vista.Tablas.TablaTipo;
 import Vista.componentes.Componentes;
@@ -28,10 +28,11 @@ public class Frm_IngresarPersona extends javax.swing.JFrame {
     TablaPersona modeloPersona = new TablaPersona();
     PersonaDAO personaD = new PersonaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Datos");
     LicenciaDAO licenciaD = new LicenciaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Datos");
+    TipoLicenciaDAO tipoLicenciaD = new TipoLicenciaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
     private ArrayList<String> tipos = new ArrayList<>();
     public Frm_IngresarPersona() {
         initComponents();
-        Componentes.cargarComboTipoLicencia(jComboBoxTipoLicencia);
+        Componentes.cargarCombo(jComboBoxTipoLicencia, tipoLicenciaD.listar(), "tipo");
         cargarTablaPersona();
     }
     
@@ -48,6 +49,17 @@ public class Frm_IngresarPersona extends javax.swing.JFrame {
         modeloTipo.setLista(tipos);
         tbTipos.setModel(modeloTipo);
         tbTipos.updateUI();
+    }
+    
+    public void limpiar(){
+        txfCedula.setText(null);
+        txfNombre.setText(null);
+        txfApellido.setText(null);
+        txfDireccion.setText(null);
+        txfTelefono.setText(null);
+        txfNroLicencia.setText(null);
+        txfFechaCaducidad.setText(null);
+        tipos.clear();
     }
 
     /**
@@ -362,37 +374,46 @@ public class Frm_IngresarPersona extends javax.swing.JFrame {
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         // TODO add your handling code here:
         if (txfCedula.getText().length() > 0 && txfNombre.getText().length() > 0 && txfApellido.getText().length() > 0 && txfDireccion.getText().length() > 0 && txfTelefono.getText().length() > 0 && txfNroLicencia.getText().length() > 0 && txfFechaCaducidad.getText().length() > 0 && tipos.size() > 0) {
-            personaD.setPersona(null);
-            personaD.getPersona().setCedula(txfCedula.getText());
-            personaD.getPersona().setNombre(txfNombre.getText());
-            personaD.getPersona().setApellido(txfApellido.getText());     
-            personaD.getPersona().setDireccion(txfDireccion.getText());
-            personaD.getPersona().setTelefono(txfTelefono.getText());
-            licenciaD.setLicencia(null);
-            licenciaD.getLicencia().setPropietario(txfCedula.getText());
-            licenciaD.getLicencia().setNroLicencia(txfNroLicencia.getText());
-            licenciaD.getLicencia().setPuntos(30);
-            licenciaD.getLicencia().setFechaCaducidad(txfFechaCaducidad.getText());
-            licenciaD.getLicencia().setTipos(tipos);
-            if (personaD.guardar() && licenciaD.guardar()) {
-                JOptionPane.showConfirmDialog(null, "Se guardo correctamente");
-                tipos.clear();
-                cargarTablaPersona();
+            if (!Utilidades.datoRepetido(personaD.listar(), "cedula", txfCedula.getText())) {
+                personaD.setPersona(null);
+                personaD.getPersona().setCedula(txfCedula.getText());
+                personaD.getPersona().setNombre(txfNombre.getText());
+                personaD.getPersona().setApellido(txfApellido.getText());     
+                personaD.getPersona().setDireccion(txfDireccion.getText());
+                personaD.getPersona().setTelefono(txfTelefono.getText());
+                licenciaD.setLicencia(null);
+                licenciaD.getLicencia().setPropietario(txfCedula.getText());
+                licenciaD.getLicencia().setNroLicencia(txfNroLicencia.getText());
+                licenciaD.getLicencia().setPuntos(30);
+                licenciaD.getLicencia().setFechaCaducidad(txfFechaCaducidad.getText());
+                licenciaD.getLicencia().setTipos(tipos);
+                if (personaD.guardar() && licenciaD.guardar()) {
+                    JOptionPane.showConfirmDialog(null, "Se guardo correctamente");
+                    limpiar();
+                    cargarTablaPersona();
+                }else{
+                    JOptionPane.showConfirmDialog(null, "No se pudo guardar");
+                } 
             }else{
-                JOptionPane.showConfirmDialog(null, "No se pudo guardar");
+                JOptionPane.showConfirmDialog(null, "Esa persona ya está registrada");
             }
         }else if(txfCedula.getText().length() > 0 && txfNombre.getText().length() > 0 && txfApellido.getText().length() > 0 && txfDireccion.getText().length() > 0 && txfTelefono.getText().length() > 0 && txfNroLicencia.getText().length() == 0 && txfFechaCaducidad.getText().length() == 0 && tipos.size() == 0){
-            personaD.setPersona(null);
-            personaD.getPersona().setCedula(txfCedula.getText());
-            personaD.getPersona().setNombre(txfNombre.getText());
-            personaD.getPersona().setApellido(txfApellido.getText());     
-            personaD.getPersona().setDireccion(txfDireccion.getText());
-            personaD.getPersona().setTelefono(txfTelefono.getText());
-            if (personaD.guardar()) {
-                JOptionPane.showConfirmDialog(null, "Se guardo correctamente");
-                cargarTablaPersona();
+            if (!Utilidades.datoRepetido(personaD.listar(), "cedula", txfCedula.getText())) {
+                personaD.setPersona(null);
+                personaD.getPersona().setCedula(txfCedula.getText());
+                personaD.getPersona().setNombre(txfNombre.getText());
+                personaD.getPersona().setApellido(txfApellido.getText());     
+                personaD.getPersona().setDireccion(txfDireccion.getText());
+                personaD.getPersona().setTelefono(txfTelefono.getText());
+                if (personaD.guardar()) {
+                    JOptionPane.showConfirmDialog(null, "Se guardo correctamente");
+                    limpiar();
+                    cargarTablaPersona();
+                }else{
+                    JOptionPane.showConfirmDialog(null, "No se pudo guardar");
+                }
             }else{
-                JOptionPane.showConfirmDialog(null, "No se pudo guardar");
+                JOptionPane.showConfirmDialog(null, "Esa persona ya está registrada");
             }
         }else{
             JOptionPane.showMessageDialog(null, "Llene todos los parametros o solo los de persona");

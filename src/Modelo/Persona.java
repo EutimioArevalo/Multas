@@ -10,7 +10,7 @@ package Modelo;
  * @author ASUS
  */
 public class Persona {
-    private String Cedula;
+    private String cedula;
     private String nombre;
     private String apellido;
     private String direccion;
@@ -20,7 +20,7 @@ public class Persona {
     }
 
     public Persona(String Cedula, String nombre, String apellido, String direccion, String telefono) {
-        this.Cedula = Cedula;
+        this.cedula = Cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
@@ -28,11 +28,11 @@ public class Persona {
     }
 
     public String getCedula() {
-        return Cedula;
+        return cedula;
     }
 
     public void setCedula(String Cedula) {
-        this.Cedula = Cedula;
+        this.cedula = Cedula;
     }
 
     public String getNombre() {

@@ -19,14 +19,15 @@ import java.util.Date;
  */
 public class Frm_RegistarMultas extends javax.swing.JDialog {
     NormativaDAO normativaD = new NormativaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
+    MarcaDAO marcaD = new MarcaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
     /**
      * Creates new form Frm_RegistarMultas
      */
     public Frm_RegistarMultas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Componentes.cargarComboNormativa(jComboBoxRubro);
-        Componentes.cargarComboPlacas(jComboBoxMarcas);
+        Componentes.cargarCombo(jComboBoxRubro, normativaD.listar(), "rubro");
+        Componentes.cargarCombo(jComboBoxMarcas, marcaD.listar(), "nombre");
         jTextFieldFecha.setText(String.valueOf(new Date()));
         this.setLocationRelativeTo(null);
     }
@@ -285,7 +286,7 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
     private void jComboBoxRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRubroItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            if (jComboBoxRubro.getSelectedIndex() != 1) {
+            if (jComboBoxRubro.getSelectedIndex() == 0) {
                 jTextAreaRubro.setText("");
                 jTextFieldGravedad.setText("");
             }else{

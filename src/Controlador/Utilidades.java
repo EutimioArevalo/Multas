@@ -86,7 +86,7 @@ public class Utilidades {
         return aux;
     }
 
-    private static String extracciondato(Object obj, String atributoClase) {
+    public static String extracciondato(Object obj, String atributoClase) {
         Class clase = obj.getClass();
         Field atributo = null;
         Object informacion = null;
@@ -134,5 +134,19 @@ public class Utilidades {
             texto = texto + tipos.get(i) + " ";
         }
         return texto;
+    }
+    
+    public static Boolean datoRepetido(ListaSimple lista, String atributoClase, String dato){
+        Boolean existe = false;
+        if (!lista.estaVacia()) {
+            for (int i = 0; i < lista.tamanio(); i++) {
+                String aux = Utilidades.extracciondato(lista.obtenerPorPosicion(i), atributoClase);
+                if (aux.equalsIgnoreCase(dato)) {
+                    existe = true;
+                    break;
+                }
+            }
+        }
+        return existe;
     }
 }

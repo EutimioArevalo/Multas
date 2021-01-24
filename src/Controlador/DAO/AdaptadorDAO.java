@@ -5,13 +5,11 @@
  */
 package Controlador.DAO;
 
-import com.thoughtworks.xstream.XStream;
 import Controlador.ListaSimple;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FilterOutputStream;
-import java.util.List;
+
 /**
  *
  * @author ASUS

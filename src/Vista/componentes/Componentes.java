@@ -8,6 +8,8 @@ package Vista.componentes;
 import Controlador.DAO.MarcaDAO;
 import Controlador.DAO.NormativaDAO;
 import Controlador.DAO.TipoLicenciaDAO;
+import Controlador.ListaSimple;
+import Controlador.Utilidades;
 import Modelo.Normativa;
 import Modelo.Marca;
 import Modelo.TipoLicencia;
@@ -21,36 +23,14 @@ import javax.swing.JFrame;
 public class Componentes extends JFrame {
 
     //JButton consultar, biblioteca, registrarM, registrarA, generarI;
-    public static void cargarComboNormativa(JComboBox cbx) {
-        cbx.removeAllItems();
-        NormativaDAO normativaD = new NormativaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
-        int tamanio = normativaD.listar().tamanio();
-        cbx.addItem("");
-        for (int i = 0; i < tamanio; i++) {
-            Normativa dato = (Normativa)normativaD.listar().obtenerPorPosicion(i);
-            cbx.addItem(dato.getRubro());
-        }
-    }
-
-    public static void cargarComboPlacas(JComboBox cbx) {
-        cbx.removeAllItems();
-        MarcaDAO marcaD = new MarcaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
-        int tamanio = marcaD.listar().tamanio();
-        cbx.addItem("");
-        for (int i = 0; i < tamanio; i++) {
-            Marca dato = (Marca)marcaD.listar().obtenerPorPosicion(i);
-            cbx.addItem(dato.getNombre());
-        }
-    }
     
-    public static void cargarComboTipoLicencia(JComboBox cbx) {
+    public static void cargarCombo(JComboBox cbx, ListaSimple lista, String atributoClase) {
         cbx.removeAllItems();
-        TipoLicenciaDAO tipoLicenciaD = new TipoLicenciaDAO("C:/Users/ASUS/Documents/NetBeansProjects/Multas/Componentes");
-        int tamanio = tipoLicenciaD.listar().tamanio();
+        int tamanio = lista.tamanio();
         cbx.addItem("");
         for (int i = 0; i < tamanio; i++) {
-            TipoLicencia dato = (TipoLicencia)tipoLicenciaD.listar().obtenerPorPosicion(i);
-            cbx.addItem(dato.getTipo());
+                String dato = Utilidades.extracciondato(lista.obtenerPorPosicion(i), atributoClase);
+                cbx.addItem(dato);
         }
     }
 }
