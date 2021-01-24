@@ -6,10 +6,10 @@
 package Vista.FrmMultas;
 
 import Controlador.ControladorListaMulta;
-import Controlador.ListaMulta;
 import Modelo.MultasTransito;
 import Vista.componentes.Componentes;
-import java.awt.event.ItemEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Date;
 
 /**
@@ -17,7 +17,12 @@ import java.util.Date;
  * @author timoa
  */
 public class Frm_RegistarMultas extends javax.swing.JDialog {
+
     ControladorListaMulta lista = new ControladorListaMulta();
+    String mensaje = "39A";
+    MultasTransito dato;
+    int contador = 0;
+
     /**
      * Creates new form Frm_RegistarMultas
      */
@@ -25,9 +30,57 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         Componentes.cargarCombo(jComboBoxRubro);
+        jComboBoxRubro.setEditable(true);
+        listener();
+
         lista.leerTxt();
         jTextFieldFecha.setText(String.valueOf(new Date()));
+
         this.setLocationRelativeTo(null);
+
+    }
+
+    public void listener() {
+        lista.getLista();
+        jComboBoxRubro.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                if (Character.isDigit(e.getKeyChar()) || Character.isLetter(e.getKeyChar())) {
+                    //System.out.println("CARACTER");
+                    mensaje = mensaje + (e.getKeyChar());
+                    //System.out.println(mensaje.toUpperCase());
+                    
+                    if (lista.getLista().compararRubro(mensaje.toUpperCase())) {
+                        //System.out.println(mensaje);
+                        dato = lista.getLista().buscarporDato(mensaje.toUpperCase());
+                        /*System.out.println(dato.getRubro());
+                        System.out.println(dato.getDescripcion());
+                        System.out.println(dato.getTipoFalta());*/
+                        jTextAreaRubro.setText(dato.getDescripcion());
+                        jTextFieldGravedad.setText(dato.getTipoFalta());   
+                        
+                    } else {
+                        
+                        jTextAreaRubro.setText("No hay coincidencias");
+                        jTextFieldGravedad.setText("No hay coincidencias");
+                      /*  System.out.println("No es mensaje");
+                        System.out.println(mensaje);
+                        System.out.println(mensaje.length());*/
+                    }
+
+                } else {
+                    //System.out.println("NO CARACTER");
+                    if ((e.getKeyCode() == KeyEvent.VK_BACK_SPACE) && mensaje.length() > 0) {
+                        mensaje = mensaje.substring(0, mensaje.length() - 1);
+                    }
+                    e.consume();
+
+                }
+
+            }
+
+        });
     }
 
     /**
@@ -80,6 +133,12 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel6.setText("Puntos a descontar");
 
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel7.setText("Placa Vehicular");
 
@@ -90,9 +149,9 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         jLabel2.setText("Rubro");
 
         jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula", "Nro de placa" }));
-        jComboBoxRubro.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxRubroItemStateChanged(evt);
+        jComboBoxRubro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBoxRubroKeyTyped(evt);
             }
         });
 
@@ -101,6 +160,12 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         jTextAreaRubro.setColumns(20);
         jTextAreaRubro.setRows(5);
         jScrollPane1.setViewportView(jTextAreaRubro);
+
+        jTextFieldGravedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldGravedadActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setText("Valor a pagar");
@@ -241,23 +306,19 @@ public class Frm_RegistarMultas extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRubroItemStateChanged
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         // TODO add your handling code here:
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            try {
-                jTextFieldGravedad.setEnabled(true);
-                jTextAreaRubro.setEnabled(true);
-                String s = jComboBoxRubro.getSelectedItem().toString();
-                MultasTransito dato = lista.getLista().obtenerPorPosicion(jComboBoxRubro.getSelectedIndex());
-                jTextAreaRubro.setText(dato.getDescripcion());
-                System.out.println(dato.getDescripcion());
-                jTextFieldGravedad.setText(dato.getTipoFalta());
-                jTextFieldGravedad.setEnabled(false);
-                jTextAreaRubro.setEditable(false);
-            } catch (Exception e) {
-            }
-        }
-    }//GEN-LAST:event_jComboBoxRubroItemStateChanged
+        listener();
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jComboBoxRubroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxRubroKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRubroKeyTyped
+
+    private void jTextFieldGravedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGravedadActionPerformed
+        // TODO add your handling code here:
+        listener();
+    }//GEN-LAST:event_jTextFieldGravedadActionPerformed
 
     /**
      * @param args the command line arguments

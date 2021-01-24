@@ -170,7 +170,7 @@ public class JFrm_Login extends javax.swing.JDialog {
 
     private void JbuttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttonCancelarActionPerformed
         // TODO add your handling code here:
-        this.
+        //this.
     }//GEN-LAST:event_JbuttonCancelarActionPerformed
 
     /**

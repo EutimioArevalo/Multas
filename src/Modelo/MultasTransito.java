@@ -47,4 +47,11 @@ public class MultasTransito {
     public void setTipoFalta(String tipoFalta) {
         this.tipoFalta = tipoFalta;
     }
+
+    @Override
+    public String toString() {
+        return getRubro();
+    }
+    
+    
 }

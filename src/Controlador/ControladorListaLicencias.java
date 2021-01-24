@@ -5,34 +5,37 @@
  */
 package Controlador;
 
-import Modelo.MultasTransito;
-import java.io.*;
-
+import Modelo.TipoLicencia;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
- * @author ASUS
+ * @author timoa
  */
-public class ControladorListaMulta {
-    ListaMulta lista = new ListaMulta();
+public class ControladorListaLicencias {
+    ListaLicencia lista = new ListaLicencia();
 
-    public ListaMulta getLista() {
+    public ListaLicencia getLista() {
         return lista;
     }
 
-    public void setLista(ListaMulta lista) {
+    public void setLista(ListaLicencia lista) {
         this.lista = lista;
     }
-    
+
     
     /**
-     * See lee los el archivo que contiene la informacion de las multas
+     * See lee los el archivo que contiene la informacion de las licencias
      */
     public void leerTxt(){
         try {
-            FileReader ficheroEntrada = new FileReader("multas.txt");
+            FileReader ficheroEntrada = new FileReader("licencias.txt");
             BufferedReader buffer = new BufferedReader(ficheroEntrada);
-            MultasTransito dato = null;
+            TipoLicencia dato = null;
             String temp = "";
             while (temp != null) {
                 temp = buffer.readLine();
@@ -40,10 +43,10 @@ public class ControladorListaMulta {
                     break;
                 String x = temp;
                 String [] arreglo = x.split(";");
-                dato = new MultasTransito(arreglo[0], arreglo[1], arreglo[2]);
+                dato = new TipoLicencia(arreglo[0], arreglo[1], arreglo[2]);
                 lista.insertar(dato);
             }
-            lista.insertarFinal(new MultasTransito("", "", ""));
+            lista.mostrarLista();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex){
@@ -53,11 +56,11 @@ public class ControladorListaMulta {
     
     public void escribirTxt(){
         try {
-            FileWriter fichero = new FileWriter("multas.txt");
+            FileWriter fichero = new FileWriter("licencias.txt");
             int tamanio = lista.tamanio();
             for (int i = 0; i < tamanio; i++) {
-                MultasTransito dato = lista.obtenerPorPosicion(i);
-                fichero.write(dato.getRubro()+";"+dato.getDescripcion()+";"+dato.getTipoFalta()+"\n");
+                TipoLicencia dato = lista.obtenerPorPosicion(i);
+                fichero.write(dato.getCategoria()+";"+dato.getTipo()+";"+dato.getCaracteristicas()+"\n");
             }
             fichero.close();
         } catch (Exception e) {

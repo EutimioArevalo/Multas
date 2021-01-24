@@ -1,0 +1,11 @@
+NO PROFESIONAL;A;Para conducción de vehículos motorizados como: ciclomotores, motocicletas, tricar, cuadrones
+NO PROFESIONAL;B;Para automóviles y camionetas con acoplados de hasta 1,75 toneladas de carga útil o casas rodantes
+NO PROFESIONAL;F;Para automotores especiales adaptados de acuerdo a la capacidad especial del conductor
+PROFESIONAL;A1;Para conducir mototaxis o tricimotos de servicio comercial, y los del tipo A
+PROFESIONAL;C;Para taxis convencionales, ejecutivos, camionetas livianas o mixta hasta 3.500 kg, hasta 8 pasajeros; vehículos de transporte de pasajeros de no más de 25 asientos y los vehículos comprendidos en el tipo B
+PROFESIONAL;C1;Para vehículos policiales, ambulancias militares, municipales, y en general todo vehículo del Estado ecuatoriano de emergencia y control de seguridad
+PROFESIONAL;D;Para servicio de pasajeros (intracantonales, interprovinciales, intra - provinciales, intraregionales y por cuenta propia), y para vehículos del Estado ecuatoriano comprendidos en el tipo B y no considerados en el tipo C1
+PROFESIONAL;D1;Para escolares, institucional y turismo, hasta 45 pasajeros
+PROFESIONAL;E;Para camiones pesados y extra pesados con o sin remolque de más de 3,5 toneladas, tráiler, volquetas, tanqueros, plataformas públicas, cuenta propia, otros camiones y los vehículos estatales con estas características
+PROFESIONAL;E1;Para ferrocarriles, auto ferros, motobombas, trolebuses, para transportar mercancías o substancias peligrosas y otros vehículos especiales
+PROFESIONAL;G;Para maquinaria agrícola, maquinaria pesada, equipos camineros (tractores, moto niveladoras, retroexcavadoras, montacargas, palas mecánicas y otros)
